@@ -14,12 +14,19 @@ third_computation=$(( c + a / b ))
 fourth_computation=$(( a % b + c ))
 
 declare -A dictionary
+
 dictionary[first_computation]=$first_computation
 dictionary[second_computation]=$second_computation
 dictionary[third_computation]=$third_computation
 dictionary[fourth_computation]=$fourth_computation
 
+declare -a array
+index=0
+
 for computation in ${!dictionary[@]}
 do 
     echo "$computation = ${dictionary[$computation]}"
+    array[index++]=${dictionary[$computation]}
 done
+
+echo "Array is: ${array[@]}"
